@@ -7,7 +7,7 @@ tags: laravel docker cloudnative buildpacks heroku
 
 ## TL;DR
 
-You can use Cloud Native Buildpacks to create your Docker Images without having to write a single line in a *Dockerfile*.
+You can use Cloud Native Buildpacks to create Docker Images without having to write a single line in a *Dockerfile*.
 
 You will need:
 
@@ -42,21 +42,21 @@ Continue reading if you want to understand what's going on.
 
 ## Containers
 
-Containers might feel intimidating at a first sight, but it really isn't that complicated. First of all, **containers are lies**. The term "container" refers to a set of features from the Linux Kernel.
+Containers might feel intimidating at a first sight, but it really isn't that complicated. First, [**containers are lies**](https://platform.sh/blog/2020/the-container-is-a-lie/). The term "container" refers to a set of features from the Linux Kernel.
 
 ![/assets/content/cloud-native-buildpacks/Containers.png](/assets/content/cloud-native-buildpacks/Containers.png)
 
-Source: [https://en.wikipedia.org/wiki/Docker_(software)](https://en.wikipedia.org/wiki/Docker_(software))
+*Source: [https://en.wikipedia.org/wiki/Docker_(software)](https://en.wikipedia.org/wiki/Docker_(software))*
 
-A container is another way to package up your application for distribution. It's kinda when we used to zip our applications, send to a server and unzip it (cough, cough lambda, cough cough). It's like a zip file or a tarball, but one where you can also add instructions on how to run.
+A container is another way to package your application for distribution. It's kinda like when we used to zip our applications, send to a server, unzip it there, and run (\*cough, cough\* lambda, \*cough, cough\*). It's like a zip file or a tarball, but one where you can also add instructions on how to run the application.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">All this fuss over fetching a tarball and executing the contents.</p>&mdash; Kelsey Hightower (@kelseyhightower) <a href="https://twitter.com/kelseyhightower/status/771043214266597376?ref_src=twsrc%5Etfw">August 31, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 ## Docker Images
 
-Docker is another umbrella term for a set of tools. In fact, Docker is so "big" these days that Kubernetes recently deprecated using it to run containers. But don't worry, Docker isn't going away. Kubernetes is just not going to use it to run your containers anymore. Docker these days have a lot of things built-in, much more than what Kubernetes needs to run a container. And that's the only reason they are favoring other container runtimes.
+Docker is another umbrella term for a set of tools. In fact, Docker has so many goodies these days that [Kubernetes recently deprecated using it to run containers](https://kubernetes.io/blog/2020/12/02/dont-panic-kubernetes-and-docker/). Don't worry, Docker isn't going away. Kubernetes is just not going to use it to *run* containers. Docker these days has a lot of things built-in, much more than what Kubernetes needs to run a container. That's the only reason they are favoring other container runtimes.
 
-For building container images, Docker is still king. There are many ways you can create your custom Docker image. You could spin-up a container using an official Ubuntu image, run your commands inside the container and then commit your changes to create your image manually. Or you could write a *Dockerfile*, like so:
+For building container images, Docker is still King. There are many ways we can create Docker images. You could spin-up a container using an official Ubuntu image, run your commands inside the container and then commit your changes to create your image manually. Or you could write a *Dockerfile*, like so:
 
 ```dockerfile
 FROM ubuntu:20.04
@@ -112,15 +112,15 @@ EXPOSE 8000
 ENTRYPOINT ["start-container"]
 ```
 
-This example was taken from [Laravel Sail](https://github.com/laravel/sail). It installs a bunch of dependencies this application needs to run, some instructions to the image users (us), such as the exposing port, and some instructions for the container runtime, such as the *entrypoint* that will receive commands for this container.
+This example was taken from [Laravel Sail](https://github.com/laravel/sail). It installs a bunch of dependencies the application needs to run, some instructions to the image users (us), such as the exposing port, and some instructions for the container runtime, such as the *entrypoint* that will receive commands for this container.
 
-That's the common way. But there is another way. What if I told you you don't need to write a single line of a Dockerfile to create a Docker Image for your application? Enters Cloud Native buildpacks.
+That's the common way. There is another way, though. What if I told you we don't need to write a single line of a Dockerfile to create a Docker Image? Enters [Cloud Native Buildpacks](https://buildpacks.io/).
 
 ## Cloud Native Buildpacks
 
-You might have used Heroku already (or at least heard of it). Heroku is a platform where you can deploy your applications to. It unit of work are called "dynos", and you can deploy to Heroku using a regular `git push` command. Turns out Heroku uses the container model. When you do a `git push` they will essentially package up your application source in a container for you. The key-point is that you don't even need to know that. Well, most of the time.
+You might have used Heroku already (or at least heard of it). Heroku is a platform where you can deploy your applications to. Its unit of work are called "Dynos", and you can deploy to Heroku using a regular `git push` command. Turns out Heroku uses the container model. When you do a `git push` they will essentially package up your application source in a container for you. The key-point is that you don't even need to know that. Well, most of the time.
 
-They are able to do that using buildpacks. Buildpacks detect which engines your application use and are able to "guess" how to run your application. Let's create a Docker Image without a *Dockerfile*. You need to install the `pack` CLI tool. Follow their instructions to get it installed on your machine. You'll also need Docker installed.
+They are able to do that using buildpacks. Buildpacks detect which engines your application use and is able to "guess" how to run your application. Let's create a Docker Image without a *Dockerfile*. You need to install the [`pack` CLI tool](https://buildpacks.io/docs/tools/pack/). Follow their instructions to get it installed on your machine. You'll also need [Docker](https://docs.docker.com/get-docker/), of course.
 
 Now, let's create a Laravel application and try using Heroku's builder:
 
@@ -132,7 +132,7 @@ laravel new --jet --stack=livewire --teams example-app
 pack build --builder heroku/buildpacks tonysm/buildpack-app
 ```
 
-If you look at the output, you will see how the Heroku builder tries a bunch of buildpacks until any of them returns positive for the detection. The detection rules might be as simple as checking if you have a `package.json` file for the NodeJS buildpack.
+If you look at the output, you will see how the Heroku builder tries a bunch of buildpacks until one of them returns positive for the detection. The detection rules might be as simple as checking if you have a `package.json` file for the NodeJS buildpack, for instace.
 
 And... that's it, actually. Well, kind of. Let's try running this container image locally:
 
@@ -145,9 +145,9 @@ docker run \
   tonysm/buildpack-app
 ```
 
-If you try to open [http://localhost:8000](http://localhost:8000) on your browser, it won't quite work yet. We need one more thing to make it work: a Procfile. This file will be used to describe our process model. Let's create it:
+If you try to open [http://localhost:8000](http://localhost:8000) in your browser, it won't quite work yet. We need one more thing to make it work: a Procfile. This file will be used to describe our process model. Let's create it:
 
-```bash
+```yml
 web: heroku-php-apache2 public/
 ```
 
@@ -176,9 +176,9 @@ Now, let's try it on the browser again and... voilà!
 
 ![/assets/content/cloud-native-buildpacks/Screenshot_from_2020-12-19_02-01-40.png](/assets/content/cloud-native-buildpacks/Screenshot_from_2020-12-19_02-01-40.png)
 
-Looks like we're done. But if you try to load either the login or the register routes, you will see a "Mix manifest does not exist" error. That's right. The builder didn't install and compile our dependencies for us. Let's do that. We have been relying on the "auto-detection" feature of Heroku's builder, but we can help it out. And we can even combine different buildpacks to create our image. Let's instruct it to use the NodeJS buildpack and the PHP buildpack after that.
+Looks like we're done, but if you try to load the login or the register routes, you will see a "Mix manifest does not exist" error. That's right. The builder didn't install and compile our dependencies for us. Let's do that. We have been relying on the "auto-detection" feature of Heroku's builder, but we can help it. We can even combine different buildpacks to create our image. Let's instruct it to use the NodeJS buildpack and the PHP buildpack after that.
 
-Before we do that, we need to instruct the NodeJS buildpack to also compile our assets for us. The NodeJS buildpack will look for an run a `build` NPM script on your package.json file. Add the following line to it:
+Before we do that, we need to instruct the NodeJS buildpack to also compile our assets for us. The NodeJS buildpack will look for an run a `build` NPM script on your package.json file (if you have a non-related `build` script already, you can add a `heroku-build` script, which will be used instead). Add the following line to it:
 
 ```bash
 {
@@ -206,11 +206,11 @@ docker run \
   tonysm/buildpack-app
 ```
 
-And now if you try to access the login form, you will no longer see the "Mix manifest missing" error.
+Now, if you try to access the login form, you will no longer see the "Mix manifest missing" error.
 
 ![/assets/content/cloud-native-buildpacks/Screenshot_from_2020-12-19_02-21-49.png](/assets/content/cloud-native-buildpacks/Screenshot_from_2020-12-19_02-21-49.png)
 
-The form doesn't work as is. That's because we would need to run a database and configure the container to talk to that DB. But that's not the scope of this article.
+The form doesn't work as is. That's because we would need to run a database and configure the container to talk to that DB, but that's not the scope of this article.
 
 ## Multiple Processes
 
@@ -218,7 +218,7 @@ As I mentioned, we can have multiple processes described in our *Procfile*, as m
 
 First, edit your `routes/console.php` file and add the following lines:
 
-```bash
+```php
 Artisan::command('test:proc', function () {
     $run = true;
 
@@ -240,12 +240,12 @@ Artisan::command('test:proc', function () {
 
 Second, edit the Procfile and add another process called `worker`, like so:
 
-```bash
+```yml
 web: heroku-php-apache2 public/
 worker: php artisan test:proc
 ```
 
-Lastly, let's this image again:
+Lastly, let's build this image again:
 
 ```bash
 pack build \
@@ -267,7 +267,7 @@ docker image inspect tonysm/buildpack-app
 # ...
 ```
 
-I *think* the first process in your Procfile will be used as the default entrypoint. If you inspect the container, you will see the other binaries with the names we gave in the *Procfile* also living in the `/cnb/process` folder. To run our `test:proc` console command, we need to point the `worker` binary in that folder as the entrypoint, like so:
+I *think* the first process in your Procfile will be used as the default entrypoint. If you inspect the container, you will see the other binaries with the names we gave in the *Procfile* also living in the `/cnb/process/` folder. To run our `test:proc` console command, we need to point the `worker` binary in that folder as the entrypoint, like so:
 
 ```bash
 docker run \
@@ -285,6 +285,12 @@ docker logs -f buildpack-example-worker
 
 Nice! If you don't specify the entrypoint, your container will start the first process defined on your *Procfile*.
 
+To stop the worker, run:
+
+```bash
+docker stop buildpack-example-worker
+```
+
 ## Conclusion
 
-I wanted to show you how we can make use of Cloud Native Buildpacks to build our Docker images without having to write a *Dockerfile*.
+I wanted to show you how we can make use of Cloud Native Buildpacks to build our Docker images without having to write a *Dockerfile*. Hope this was useful.

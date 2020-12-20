@@ -50,7 +50,7 @@ Source: [https://en.wikipedia.org/wiki/Docker_(software)](https://en.wikipedia.o
 
 A container is another way to package up your application for distribution. It's kinda when we used to zip our applications, send to a server and unzip it (cough, cough lambda, cough cough). It's like a zip file or a tarball, but one where you can also add instructions on how to run.
 
-[https://twitter.com/kelseyhightower/status/771043214266597376](https://twitter.com/kelseyhightower/status/771043214266597376)
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">All this fuss over fetching a tarball and executing the contents.</p>&mdash; Kelsey Hightower (@kelseyhightower) <a href="https://twitter.com/kelseyhightower/status/771043214266597376?ref_src=twsrc%5Etfw">August 31, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 ## Docker Images
 

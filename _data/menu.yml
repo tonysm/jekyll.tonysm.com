@@ -1,0 +1,30 @@
+# For documentation on this file, see:
+# https://github.com/riggraz/no-style-please#customize-the-menu
+
+entries:
+  - title: info
+    entries:
+      - title: my personal website and blog.
+      - title: email me
+        url: mailto:tonysm@hey.com
+      - title: github profile
+        url: https://github.com/tonysm
+      - title: twitter profile
+        url: https://twitter.com/tonysmdev
+      - title: youtube channel
+        url: https://www.youtube.com/channel/UCGtfJjAR5JeBPAmxN_ZHx4Q?view_as=subscriber
+
+  - title: thoughts
+    post_list:
+      limit: 100
+      show_more: true
+      show_more_text: See archive...
+      show_more_url: archive.html
+
+  - title: courses
+    entries:
+      - title: Kubernetes for Laravel Developers (free)
+        url: /courses/kubernetes-for-laravel-developers/
+
+  - title: rss
+    url: feed.xml

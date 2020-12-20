@@ -112,7 +112,7 @@ EXPOSE 8000
 ENTRYPOINT ["start-container"]
 ```
 
-This example was taken from Laravel Sail. It installs a bunch of dependencies this application needs to run, some instructions to the image users (us), such as the exposing port, and some instructions for the container runtime, such as the *entrypoint* that will receive commands for this container.
+This example was taken from [Laravel Sail](https://github.com/laravel/sail). It installs a bunch of dependencies this application needs to run, some instructions to the image users (us), such as the exposing port, and some instructions for the container runtime, such as the *entrypoint* that will receive commands for this container.
 
 That's the common way. But there is another way. What if I told you you don't need to write a single line of a Dockerfile to create a Docker Image for your application? Enters Cloud Native buildpacks.
 

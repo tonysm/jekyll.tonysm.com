@@ -14,17 +14,17 @@ entries:
       - title: youtube channel
         url: https://www.youtube.com/channel/UCGtfJjAR5JeBPAmxN_ZHx4Q?view_as=subscriber
 
+  - title: courses
+    entries:
+      - title: Kubernetes for Laravel Developers (free)
+        url: /courses/kubernetes-for-laravel-developers/
+
   - title: thoughts
     post_list:
       limit: 100
       show_more: true
       show_more_text: See archive...
       show_more_url: archive.html
-
-  - title: courses
-    entries:
-      - title: Kubernetes for Laravel Developers (free)
-        url: /courses/kubernetes-for-laravel-developers/
 
   - title: rss
     url: feed.xml

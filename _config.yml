@@ -6,7 +6,7 @@ baseurl: "" # subpath of the site, e.g. "/blog"
 description: > # description of the site (multiple lines allowed)
   My personal website and blog.
 
-permalink: /:slug
+permalink: /:slug/
 
 highlighter: rouge
 

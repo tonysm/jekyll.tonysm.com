@@ -44,7 +44,7 @@ Continue reading if you want to understand what's going on.
 
 Containers might feel intimidating at a first sight, but it really isn't that complicated. First of all, **containers are lies**. The term "container" refers to a set of features from the Linux Kernel.
 
-![/assets/content/cloud-native-buildpacks/Docker.png](/assets/content/cloud-native-buildpacks/Docker.png)
+![/assets/content/cloud-native-buildpacks/Containers.png](/assets/content/cloud-native-buildpacks/Containers.png)
 
 Source: [https://en.wikipedia.org/wiki/Docker_(software)](https://en.wikipedia.org/wiki/Docker_(software))
 

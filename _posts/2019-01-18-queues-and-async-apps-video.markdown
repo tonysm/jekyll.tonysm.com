@@ -9,6 +9,6 @@ Right after I posted the [video](https://www.youtube.com/watch?v=GtphrhnFwZQ) wh
 
 In this talk, I walk-through a problem of a server provisioning application, where we need to deal with long-running operations (like install dependencies in a server), and how to approach that using Queues and Workers. Then we jump in to enrich the UI with some real-time feedback using WebSockets.
 
-<center>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/mhmkap7jdu8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+<div class="embed-responsive">
+  <iframe src="https://www.youtube.com/embed/mhmkap7jdu8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>

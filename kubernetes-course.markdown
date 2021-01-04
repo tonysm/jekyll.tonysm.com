@@ -40,49 +40,65 @@ This is the first video of the series. I'm going to be talking about what we are
 
 In this video, we will create our example Laravel application, but I'm assuming you have nothing but Docker installed locally (no local PHP binaries).
 
-<iframe style="margin: 0 auto; display: block;" width="560" height="315" src="https://www.youtube.com/embed/f02rH-lRW24" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+<div class="embed-responsive">
+    <iframe src="https://www.youtube.com/embed/f02rH-lRW24" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+</div>
 
 ### 02 Local development
 
 Next, we are going to set up a development environment for our Laravel application using Docker Compose.
 
-<iframe style="margin: 0 auto; display: block;" width="560" height="315" src="https://www.youtube.com/embed/Fv4qj3K8wSk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+<div class="embed-responsive">
+    <iframe src="https://www.youtube.com/embed/Fv4qj3K8wSk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+</div>
 
 ### 03 Optimizing our Docker Image for Production
 
 In this video, we are going to make some tweaks in our application's Docker images for a better production tuning.
 
-<iframe style="margin: 0 auto; display: block;" width="560" height="315" src="https://www.youtube.com/embed/r_9PnDWPl6s" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+<div class="embed-responsive">
+    <iframe src="https://www.youtube.com/embed/r_9PnDWPl6s" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+</div>
 
 ### 04 Setting up a production environment on Kubernetes
 
 It's time to talk about our production environment. Let's discuss our options of Container Platforms and create a Kubernetes cluster on DigitalOcean.
 
-<iframe style="margin: 0 auto; display: block;" width="560" height="315" src="https://www.youtube.com/embed/HPf_i1a8xC0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+<div class="embed-responsive">
+    <iframe src="https://www.youtube.com/embed/HPf_i1a8xC0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+</div>
 
 ### 05 Deploying the Application
 
 With our cluster ready, it's time to create the manifest for our application and deploy it. We'll visualize a rolling update!
 
-<iframe style="margin: 0 auto; display: block;" width="560" height="315" src="https://www.youtube.com/embed/4epidR7AZP4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+<div class="embed-responsive">
+    <iframe src="https://www.youtube.com/embed/4epidR7AZP4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+</div>
 
 ### 06 Configuration management and Secrets
 
 We ended up with an ugly (and not that secure) manifest files, filled with secrets in plain-text. Let's make it a bit more safe and explore the concept of Secrets in Kubernetes.
 
-<iframe style="margin: 0 auto; display: block;" width="560" height="315" src="https://www.youtube.com/embed/wy6kXFFAum0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+<div class="embed-responsive">
+    <iframe src="https://www.youtube.com/embed/wy6kXFFAum0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+</div>
 
 ### 07 Database migrations
 
 So far, we have been running migrations manually. That's not optimal. Let's automate that and discuss possible solutions.
 
-<iframe style="margin: 0 auto; display: block;" width="560" height="315" src="https://www.youtube.com/embed/exCMUEJt6DQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+<div class="embed-responsive">
+    <iframe src="https://www.youtube.com/embed/exCMUEJt6DQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+</div>
 
 ### 08 CI/CD, Docker, and Kubernetes
 
 It's time to automate everything! Let's create a git repository for our infrastructure and change our application's CI to automatically patch the Kubernetes manifests whenever a new image is built.
 
-<iframe style="margin: 0 auto; display: block;" width="560" height="315" src="https://www.youtube.com/embed/uLcAca-gDVI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+<div class="embed-responsive">
+    <iframe src="https://www.youtube.com/embed/uLcAca-gDVI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+</div>
 
 ### 09 Closing thoughts
 

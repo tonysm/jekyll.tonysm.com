@@ -7,9 +7,9 @@ tags: turbolinks mobile hybrid
 
 In this video, I want to cover one aspect of using Turbolinks that I think it's not shared enough. Turbolinks has mobile bridges that make it really easy to wrap your existing web applications in a real native shell application, having some real mobile navigation and behaviors on top of your web content.
 
-<center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gXkwL-s4IZw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+<div class="embed-responsive">
+<iframe src="https://www.youtube.com/embed/gXkwL-s4IZw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 Some relevant links:
 

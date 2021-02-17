@@ -199,7 +199,11 @@ One way to make OOP work on such large scale systems is to create a class for th
 
 Another problem of OOP he describes is that we tend to worry too much about the state our objects hold and neglect the control flow (who sends the message to whom). That ends up being a mess. An Object sends a message to another Object, which sends a message to a bunch of other Objects, and those send messages to even more objects. Good luck trying to understand this system.
 
+![Messages as methods](/assets/content/oop/05-oop-messages-as-methods.png)
+
 Kay suggests what resembles a Pub/Sub approach. They were exploring a more *declarative* approach in Smalltalk. Instead of sending messages directly to each other, Objects would declare to the system which messages they are interested in (subscribing). Messages would then "broadcast" to the system (publishing). If you have done any UI work, this should feel familiar to you, because it looks like [event listeners in JavaScript](https://developer.mozilla.org/en-US/docs/Web/API/EventListener).
+
+![Message Broadcasting](/assets/content/oop/06-oop-message-broadcasting.png)
 
 This *declarative* nature is what both Kay and Armstrong are talking about. And it's present in some Functional Programming languages too (and if you want to see where the ideas OOP blends with FP, watch this talk by Anjana Vakil called "[Oops! OOP's not what I thought](https://www.youtube.com/watch?v=qMdxExJCD5s)").
 

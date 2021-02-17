@@ -196,7 +196,7 @@ Source: Wikipedia page on "Deferent and epicycle" (<a href="https://en.wikipedia
 
 </p>
 
-[Kepler had this belief too](https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion), but after struggling to explain some of evidence about the movements of objects, he then abandoned the idea of "perfect circle" and suggested that the orbits were actually elliptical and around the Sun - not the Earth, simplifying the model quite a lot ([read this](https://earthobservatory.nasa.gov/features/OrbitsHistory/page2.php) to know more about this).
+[Kepler had this belief too](https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion), but after struggling to explain some of the evidences about the movements of objects, he then abandoned the idea of "perfect circle" and suggested that the orbits were actually elliptical and around the Sun - not the Earth, simplifying the model quite a lot ([read this](https://earthobservatory.nasa.gov/features/OrbitsHistory/page2.php) to know more about this).
 
 ![Kepler's elliptical orbits](/assets/content/oop/04-orbits-3.png)
 

@@ -5,7 +5,7 @@ date:   2021-02-16 00:01:01 -0300
 tags: oop laravel
 ---
 
-I've been looking up resources on the roots of Object-Oriented Programming - a.k.a. OOP. This journey started because there is a trend in the Laravel community of using Actions and the saying goes as *that's what "Real OOP" is about*. I had some doubts about it and instead of asking around, I decided to look for references from the old Smalltalk days.
+I've been looking up resources on the roots of Object-Oriented Programming - a.k.a. OOP. This journey started because there is a trend in the Laravel community of using Actions and the saying goes as *that's what "Real OOP" is about*. I had some doubts about it and instead of asking around, I decided to look for references from the Smalltalk days, and found out the book [Smalltalk, Objects, and Design](https://www.amazon.com/Smalltalk-Objects-Design-Chamond-Liu/dp/1583484906/) and some great talks. This journey has been so fun and revelating that I thought it would be nice to write about it.
 
 That goes against what I thought it meant to write Object-Oriented Programming. The pattern states that logic should be wrapped in [Action classes](https://stitcher.io/blog/laravel-beyond-crud-03-actions). The idea isn't new as other communities have been advocating for "[Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)" where each "Use Case" (or *Interactor*) would be its own class. It's very similar. But is it really what OOP is about?
 
@@ -22,7 +22,7 @@ An object has state and operations combined. At the time where it was coined, ap
 
 Such messages usually take the form of method class and this idea that got propagated in other languages such as Java or C++. Joe Armstrong, one of the co-designers of Erlang, [wrote in the Elixir](https://elixirforum.com/t/learning-elixir-frst-impressions-plz-dont-kill-me/16424/52) forum that, in Smalltalk, messages "were not real messages but disguised synchronous function calls", and that "mistake" (according to him) was also repeated in other languages.
 
-One common misconception I see is thinking of objects as types. Types (or [Abstract Data Types](https://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=1BC6456DEBB197D0E99CE43E9ED0AFE9?doi=10.1.1.136.3043&rep=rep1&type=pdf), which are "synonyms" - or close enough - for the purpose of this writing) aren't objects. As Kay points out in [this seminar](https://www.youtube.com/watch?v=QjJaFG63Hlo), the way objects are used these days is a bit confusing because it's intertwined with another idea from the '60s: data abstraction (ADTs). They are similar in some ways, particularly in implementation, but its intent is different.
+One common misconception seems to be on thinking of objects as types. Types (or [Abstract Data Types](https://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=1BC6456DEBB197D0E99CE43E9ED0AFE9?doi=10.1.1.136.3043&rep=rep1&type=pdf), which are "synonyms" - or close enough - for the purpose of this writing) aren't objects. As Kay points out in [this seminar](https://www.youtube.com/watch?v=QjJaFG63Hlo), the way objects are used these days is a bit confusing because it's intertwined with another idea from the '60s: data abstraction (ADTs). They are similar in some ways, particularly in implementation, but its intent is different.
 
 The intent of ADT, according to Kay, was to take a system in Pascal/FORTRAN that's starting to become difficult to change (where the knowledge has been spread out in procedures) and wrap envelopes around data structures, invoking operations by means of procedures in order to get it to be a bit more representation independent.
 
@@ -76,12 +76,12 @@ class Account extends Model
 <summary><small>Notes on Active Record</small></summary>
 
 
-<small><i>The code examples are done in a Laravel context. I'm lucky enough to happen to own the databases I work with, so I'm not gonna try to fight with the tools I have and instead will embrace Eloquent, which is an Active Record implementation (for the non-Laravel folks reading this). That's why I have database stuff mixed in my models. I recommend experimenting with different approaches so you can make up your own mind about these things. I'm just showing an alternative that I happen to like.</i></small>
+<small><i>The code examples are done in a Laravel context. I'm lucky enough to happen to own the databases I work with, so I don't consider that an outer layer of my apps (se <a href="https://martinfowler.com/articles/badri-hexagonal/">this</a>), which allows me to fully use the tools at hand, such as the Eloquent ORM - an Active Record implementation for the non-Laravel folks reading this. That's why I have database calls in the model. Not all classes in my domain model extends are Active Record models, though (see <a href="https://www.youtube.com/watch?v=hkmrfjex7jI&list=PL9wALaIpe0Py6E_oHCgTrD6FvFETwJLlx&index=4">this</a>). I recommend experimenting with different approaches so you can make up your own mind about these things. I'm just showing an alternative that I happen to like.</i></small>
 
 
 </details>
 
-But that's not the end of the story. Sometimes, you need to break these "rules", depending on your use case. For instance, you might have to keep track of every transaction happening to an Account. Or be able to schedule a transfer or an invoice payment. Or also cancel these if they are not due yet.
+But that's not the end of the story. Sometimes, you need to break these "rules", depending on your use case. For instance, you might have to keep track of every transaction happening to an Account. You could try to model this around the relevant domain methods, maybe using events and listeners. That could work, but if you, for instance, you have to be able to schedule a transfer or an invoice payment. Or also cancel these if they are not due yet. If you listen closely, you can almost hear the system asking for something.
 
 Knowing only its balance isn't that useful when you think of an Account. You have 100k dollars on it, sure, but how did it got there? These are the kind of things we should be able to know, don't you think? Also, if you model everything around Account, it tends to grow to a point of becoming [God objects](https://en.wikipedia.org/wiki/God_object).
 
@@ -154,7 +154,7 @@ As you can see, the public API for the `$account->deposit(100_00)` behavior didn
 
 This same idea can be ported to other domains as well. For instance, if you have a document model in a collaborative text editing context, you cannot rely on having a single `content` text field holding the current state of the Document's content. You would need to apply a similar idea and keep track of each [Operation Transformation](https://www.youtube.com/watch?v=lmjMC2FRF-A) happening to the document instead.
 
-I first saw this idea presented by Adam Wathan on his [Pushing Polymorphism to the Database](https://adamwathan.me/2015/09/03/pushing-polymorphism-to-the-database/) article and conference talk. And I also found references in the [Smalltalk, Objects, and Design](https://www.amazon.com/Smalltalk-Objects-Design-Chamond-Liu/dp/1583484906/ref=sr_1_1?dchild=1&keywords=smalltalk+objects+and+design&qid=1613327978&sr=8-1) book, as well as on a recent [Rails PR](https://github.com/rails/rails/pull/39341) done by DHH introducing *delegated types*. I find it really powerful and quite versatile, but don't see that many people talking about, so that's why I found it relevant to mention here.
+I first saw this idea presented by Adam Wathan on his [Pushing Polymorphism to the Database](https://adamwathan.me/2015/09/03/pushing-polymorphism-to-the-database/) article and conference talk. And I also found references in the [Smalltalk, Objects, and Design](https://www.amazon.com/Smalltalk-Objects-Design-Chamond-Liu/dp/1583484906/) book, as well as on a recent [Rails PR](https://github.com/rails/rails/pull/39341) done by DHH introducing *delegated types*. I find it really powerful and quite versatile, but don't see that many people talking about, so that's why I found it relevant to mention here.
 
 Another example could be an PaaS app. You have provisioned servers and you can deploy on them. With only this short description one could model it as `$server->deploy(int $commitHash)`. But what if the user can cancel a deployment? Or rollback to a previous deployment? That change in requirements should trigger your curiosity to at least experiment promoting the deploy to its own Deployment object or something similar.
 
@@ -172,20 +172,43 @@ The example of Kepler and the elliptical orbit theory that Kay uses is really go
 
 !["Perfect Circle" Orbits](/assets/content/oop/02-orbits-1.png)
 
-Source: NASA ([link](https://earthobservatory.nasa.gov/features/OrbitsHistory/page2.php))
+<p align="center">
+
+<small>
+
+Source: NASA's Earth Observatory (<a href="https://earthobservatory.nasa.gov/features/OrbitsHistory/page2.php">link</a>)
+
+</small>
+
+</p>
 
 That didn't quite make sense because objects seemed to be in different positions depending on the day (among other problems), so they built a different theory where the orbits were still "perfect circles" but the objects were not going round, but instead moving in a way that at a macro level also built another "perfect circle", something like this:
 
 !["Perfect Cicles" more complex orbits](/assets/content/oop/03-orbits-2.png)
 
-Source: Wikipedia page on "Deferent and epicycle" ([link](https://en.wikipedia.org/wiki/Deferent_and_epicycle))
+<p align="center">
+
+<small>
+
+Source: Wikipedia page on "Deferent and epicycle" (<a href="https://en.wikipedia.org/wiki/Deferent_and_epicycle">link</a>)
+
+</small>
+
+</p>
 
 [Kepler had this belief too](https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion), but after struggling to explain some of evidence about the movements of objects, he then abandoned the idea of "perfect circle" and suggested that the orbits were actually elliptical and around the Sun - not the Earth, simplifying the model quite a lot ([read this](https://earthobservatory.nasa.gov/features/OrbitsHistory/page2.php) to know more about this).
 
 ![Kepler's elliptical orbits](/assets/content/oop/04-orbits-3.png)
 
-Source: Wikipedia page on "Kepler's laws of planetary motion" ([link](https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion))
+<p align="center">
 
+<small>
+
+Source: Wikipedia page on "Kepler's laws of planetary motion" (<a href="https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion">link</a>)
+
+</small>
+
+</p>
 His observation was one of the pillars of Newton's law of [universal gravitation](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation). Which later led to Einstein's [theory of relativity.](https://en.wikipedia.org/wiki/Theory_of_relativity)
 
 This demonstrates that the right level of abstraction often simplifies our models. Things "just makes sense" in a way that it's easier to understand than the alternatives. And it's an iterative process.
@@ -263,13 +286,17 @@ Also, we could use Laravel's Job abstraction here, as jobs can be both synchrono
 
 My intent with this article is mainly to share and hear back from other people what they think of this all. I'm not trying to convince you of this. I'm making peace with this idea of having actions for behavior (as messages) myself. It sometimes feels like "procedures" where we're invoking logic by name. I'm not sure if I would use it for every bit of logic in my applications, but I think I like it when combined with Facade methods in the models.
 
+I also found some cool design patterns that I don't see being referenced a lot. I'll blog about them soon.
+
 Let me know what you think about this. Either [write](mailto:tonysm@hey.com) to me, [tweet](https://twitter.com/tonysmdev), or write a response article and share it with me.
 
-PS: I only now found this great talk from Anjana Vakil called "[Programming Across Paradigms](https://www.youtube.com/watch?v=Pg3UeB-5FdA)" which I highly recommend.
+P.S.: I only now found this great talk from Anjana Vakil called "[Programming Across Paradigms](https://www.youtube.com/watch?v=Pg3UeB-5FdA)" which I highly recommend.
+
+P.S.2: Some of the images here were created using [Excalidraw](http://excalidraw.com/)
 
 ## Criticism on OOP
 
-While I was reading the book "Smalltalk, Objects, and Design" I found out that Dijkstra doesn't seem like OOP (see this [quora question and responses](https://www.quora.com/Why-did-Dijkstra-say-that-%E2%80%9CObject-oriented-programming-is-an-exceptionally-bad-idea-which-could-only-have-originated-in-California-%E2%80%9D)). [He advocated against the use of metaphors and analogies in software](https://www.cs.utexas.edu/~EWD/transcriptions/EWD10xx/EWD1036.html) (referenced, but I haven't read it fully myself), and in favor of a more "formal" and mathematical way of building software (in terms of formal thinking), as he coined the term "structured programming". But the book also mentions there is [research on invention and creativity](https://www.amazon.com/Essay-Psychology-Invention-Mathematical-Field-ebook/dp/B005ZD77EY/ref=sr_1_1?dchild=1&keywords=An+Essay+on+the+Psychology+of+Invention+in+the+Mathematical+Field&qid=1613517885&sr=8-1) (referenced, but I haven't read it myself) that suggests that imagery fuels the creative process, not formal thinking. I found this all very entertaining to research.
+While I was reading the book [Smalltalk, Objects, and Design](https://www.amazon.com/Smalltalk-Objects-Design-Chamond-Liu/dp/1583484906/) I found out that Dijkstra doesn't seem like OOP (see this [quora question and responses](https://www.quora.com/Why-did-Dijkstra-say-that-%E2%80%9CObject-oriented-programming-is-an-exceptionally-bad-idea-which-could-only-have-originated-in-California-%E2%80%9D)). [He advocated against the use of metaphors and analogies in software](https://www.cs.utexas.edu/~EWD/transcriptions/EWD10xx/EWD1036.html) (referenced, but I haven't read it fully myself), and in favor of a more "formal" and mathematical way of building software (in terms of formal thinking), as he coined the term "structured programming". But the book also mentions there is [research on invention and creativity](https://www.amazon.com/Essay-Psychology-Invention-Mathematical-Field-ebook/dp/B005ZD77EY/ref=sr_1_1?dchild=1&keywords=An+Essay+on+the+Psychology+of+Invention+in+the+Mathematical+Field&qid=1613517885&sr=8-1) (referenced, but I haven't read it myself) that suggests that imagery fuels the creative process, not formal thinking. I found this all very entertaining to research.
 
 ## Relevant References
 

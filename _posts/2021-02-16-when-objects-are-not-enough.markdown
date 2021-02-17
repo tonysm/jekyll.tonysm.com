@@ -71,7 +71,15 @@ class Account extends Model
 }
 ```
 
-*Note: The code examples are done in a Laravel context. I'm lucky enough to happen to own the databases I work with, so I'm not gonna try to fight with the tools I have and instead will embrace Eloquent, which is an Active Record implementation (for the non-Laravel folks reading this). That's why I have database stuff mixed in my models. I recommend experimenting with different approaches so you can make up your own mind about these things. I'm just showing an alternative that I happen to like.*
+<details>
+
+<summary><small>Notes on Active Record</small></summary>
+
+
+<small><i>The code examples are done in a Laravel context. I'm lucky enough to happen to own the databases I work with, so I'm not gonna try to fight with the tools I have and instead will embrace Eloquent, which is an Active Record implementation (for the non-Laravel folks reading this). That's why I have database stuff mixed in my models. I recommend experimenting with different approaches so you can make up your own mind about these things. I'm just showing an alternative that I happen to like.</i></small>
+
+
+</details>
 
 But that's not the end of the story. Sometimes, you need to break these "rules", depending on your use case. For instance, you might have to keep track of every transaction happening to an Account. Or be able to schedule a transfer or an invoice payment. Or also cancel these if they are not due yet.
 
@@ -162,7 +170,7 @@ Alan Kay has a [good presentation on the subject](https://www.youtube.com/watch?
 
 The example of Kepler and the elliptical orbit theory that Kay uses is really good (read more about it [here](https://earthobservatory.nasa.gov/features/OrbitsHistory/page2.php)). At that time, there was a religious belief that planets moved in "perfect circles", where the Sun was orbiting the Earth while other objects were orbiting the Sun.
 
-!["Perfect Circle" Orbits](/assets/content/oop/03-orbits-2.png)
+!["Perfect Circle" Orbits](/assets/content/oop/02-orbits-1.png)
 
 Source: NASA ([link](https://earthobservatory.nasa.gov/features/OrbitsHistory/page2.php))
 
@@ -230,7 +238,7 @@ class Deposit
 }
 ```
 
-If you notice, our Account model doesn't have a deposit method anymore (or doesn't need it). This is the decision I have mixed feelings about, to be honest. Maybe it's fine since we promoted the Deposit *message* to an object as well? We could also implement a [Facade \(GoF\)](https://en.wikipedia.org/wiki/Facade_pattern) method in the Account that would delegate to this action:
+If you notice, our Account model doesn't have a deposit method anymore (or doesn't need it). This is the decision I have mixed feelings about, to be honest. Maybe it's fine since we promoted the Deposit *message* to an object as well? We could also implement a Facade method method in the Account that would delegate to this action:
 
 ```php
 
@@ -244,6 +252,8 @@ class Account extends Model
 ```
 
 This way we would keep the behavior separate on its own object, and still maintain an easy to consume API on the Account model. That's what I feel more comfortable with these days.
+
+![Facade Method](/assets/content/oop/7-facade-method.png)
 
 One "downside" of this approach is that every dependency of the Deposit message would have to be part of the method signature of the Facade method as well. Not a big deal, and most of the time it makes sense. Say you're modelling a `PayInvoice` action, you would most certainly need to pass a *PaymentProvider* dependency to the `$invoice->pay($provider, $amount)` facade method (or a factory).
 

@@ -253,7 +253,7 @@ class Account extends Model
 
 This way we would keep the behavior separate on its own object, and still maintain an easy to consume API on the Account model. That's what I feel more comfortable with these days.
 
-![Facade Method](/assets/content/oop/7-facade-method.png)
+![Facade Method](/assets/content/oop/07-facade-method.png)
 
 One "downside" of this approach is that every dependency of the Deposit message would have to be part of the method signature of the Facade method as well. Not a big deal, and most of the time it makes sense. Say you're modelling a `PayInvoice` action, you would most certainly need to pass a *PaymentProvider* dependency to the `$invoice->pay($provider, $amount)` facade method (or a factory).
 

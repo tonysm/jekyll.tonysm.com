@@ -83,7 +83,7 @@ class Account extends Model
 
 But that's not the end of the story. Sometimes, you need to break these "rules", depending on your use case. For instance, you might have to keep track of every transaction happening to an Account. You could try to model this around the relevant domain methods, maybe using events and listeners. That could work, but if you, for instance, you have to be able to schedule a transfer or an invoice payment. Or also cancel these if they are not due yet. If you listen closely, you can almost hear the system asking for something.
 
-Knowing only its balance isn't that useful when you think of an Account. You have 100k dollars on it, sure, but how did it got there? These are the kind of things we should be able to know, don't you think? Also, if you model everything around Account, it tends to grow to a point of becoming [God objects](https://en.wikipedia.org/wiki/God_object).
+Knowing only its balance isn't that useful when you think of an Account. You have 100k dollars on it, sure, but how did it get there? These are the kind of things we should be able to know, don't you think? Also, if you model everything around Account, it tends to grow to a point of becoming [God objects](https://en.wikipedia.org/wiki/God_object).
 
 This is where people turn to other approaches like [Event Sourcing](https://martinfowler.com/eaaDev/EventSourcing.html). And that could be the answer, as the primary example for it is a *banking system*. But there is an Object-Oriented way to model this problem.
 

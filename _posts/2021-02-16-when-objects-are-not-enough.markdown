@@ -261,7 +261,7 @@ class Deposit
 }
 ```
 
-If you notice, our Account model doesn't have a deposit method anymore (or doesn't need it). This is the decision I have mixed feelings about, to be honest. Maybe it's fine since we promoted the Deposit *message* to an object as well? We could also implement a Facade method method in the Account that would delegate to this action:
+If you notice, our Account model doesn't have a deposit method anymore (or doesn't need it). This is the decision I have mixed feelings about, to be honest. Maybe it's fine since we promoted the Deposit *message* to an object as well? We could also implement a Facade method in the Account that would delegate to this action:
 
 ```php
 

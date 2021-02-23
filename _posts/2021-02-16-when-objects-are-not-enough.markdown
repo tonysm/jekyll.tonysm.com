@@ -5,9 +5,9 @@ date:   2021-02-16 00:01:01 -0300
 tags: oop laravel
 ---
 
-I've been looking up resources on the roots of Object-Oriented Programming - a.k.a. OOP. This journey started because there is a trend in the Laravel community of using Actions and the saying goes as *that's what "Real OOP" is about*. I had some doubts about it and instead of asking around, I decided to look for references from the Smalltalk days, and found out the book [Smalltalk, Objects, and Design](https://www.amazon.com/Smalltalk-Objects-Design-Chamond-Liu/dp/1583484906/) and some great talks. This has been so fun and revealing that I thought it would be nice to write about it.
+I've been looking up resources on the roots of Object-Oriented Programming - a.k.a. OOP. This journey started because there is a trend in the Laravel community of using Actions and the saying goes as *that's what "Real OOP" is about*. I had some doubts about it and instead of asking around, I decided to look for references from the Smalltalk days. That's when I found the book [Smalltalk, Objects, and Design](https://www.amazon.com/Smalltalk-Objects-Design-Chamond-Liu/dp/1583484906/). I'm having such a good time researching this that I wanted to share my findings so far.
 
-That goes against what I thought it meant to write Object-Oriented code. The pattern states that logic should be wrapped in [Action classes](https://stitcher.io/blog/laravel-beyond-crud-03-actions). The idea isn't new as other communities have been advocating for "[Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)" where each "Use Case" (or *Interactor*) would be its own class. It's very similar. But is it really what OOP is about?
+This _Actions_ pattern states that logic should be wrapped in [Action classes](https://stitcher.io/blog/laravel-beyond-crud-03-actions). The idea isn't new as other communities have been advocating for "[Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)" where each "Use Case" (or *Interactor*) would be its own class. It's very similar. But is it really what OOP is about?
 
 If you're interested in a TL;DR version of this article, here it is:
 

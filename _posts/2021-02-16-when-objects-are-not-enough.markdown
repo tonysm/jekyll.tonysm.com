@@ -238,7 +238,7 @@ Kay suggests what resembles a Pub/Sub approach. They were exploring a more *decl
 
 This *declarative* nature is what both Kay and Armstrong are talking about. And it's present in some Functional Programming languages too (and if you want to see where the ideas OOP blends with FP, watch this talk by Anjana Vakil called "[Oops! OOP's not what I thought](https://www.youtube.com/watch?v=qMdxExJCD5s)").
 
-In our example, we could have a *Withdraw* action in the our application. And it could be totally independent of the outside World (transport mechanisms - [I treat the database as an "inside" part of my apps](https://martinfowler.com/articles/badri-hexagonal/)), something like:
+In our example, we could have a *Deposit* action in the our application. And it could be totally independent of the outside World (transport mechanisms - [I treat the database as an "inside" part of my apps](https://martinfowler.com/articles/badri-hexagonal/)), something like:
 
 ```php
 

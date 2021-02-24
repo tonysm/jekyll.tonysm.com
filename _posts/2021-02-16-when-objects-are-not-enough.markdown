@@ -160,7 +160,7 @@ Another example could be an PaaS app. You have provisioned servers and you can d
 
 One more example I wanted to mention about reification is when you have two entities collaborating on a behavior and the logic doesn't quite fit one or the other. Or both of them could be candidates for this behavior. Let's say you have a Student and a Course model and you want to keep track of their presence and grade (assuming we only have a single presence `present | absent` and single grade value `0..10`). Where do we store this data?
 
-It should feel like it doesn't belong in the Course, nor in the Student records. It *almost* feels like the solution to this problem could be to give up on OOP entirely and a function that you could pass both objects to. If we reify this problem, we could promote the Student/Course *relationship* to an Object called *StudentCourse*. That would make the perfect place to store the grade and presence. These are examples of reification.
+It should feel like it doesn't belong in the Course, nor in the Student records. It *almost* feels like the solution to this problem could be to give up on OOP entirely and use a function that you could pass both objects to. If we reify this problem, we could promote the Student/Course *relationship* to an Object called *StudentCourse*. That would make the perfect place to store the grade and presence. These are examples of reification.
 
 ## Abstractions as Simplifications
 

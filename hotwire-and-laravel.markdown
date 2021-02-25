@@ -4,7 +4,7 @@ title: Hotwire & Laravel
 permalink: /courses/hotwire-laravel
 ---
 
-I've been working on [Turbo Laravel](https://github.com/tonysm/turbo-laravel) - a package that bridges Hotwire with Laravel, and although I have done an introduction to Hotwire before, I didn't really dive into using the package itself. And I also didn't cover a the [Turbo Native](https://turbo.hotwire.dev/handbook/native) aspect of building applications this way, so... it's time!
+I've been working on [Turbo Laravel](https://github.com/tonysm/turbo-laravel) - a package that bridges Hotwire with Laravel, and although I have done an [introduction to Hotwire](https://youtu.be/qqLVbd_uGiI?t=171) before, I didn't really dive into using the package itself (lol, right?). And I also didn't cover the [Turbo Native](https://turbo.hotwire.dev/handbook/native) aspect of building applications this way, so... it's time!
 
 ## Screencasts
 

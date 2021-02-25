@@ -16,6 +16,8 @@ entries:
 
   - title: courses
     entries:
+      - title: Hotwire and Laravel (mini-course, free)
+        url: /courses/hotwire-laravel/
       - title: Kubernetes for Laravel Developers (free)
         url: /courses/kubernetes-for-laravel-developers/
 

@@ -36,7 +36,7 @@ For the third and last episode, I go over the [Turbo Native](https://turbo.hotwi
 
 ## Hotwire & Laravel
 
-The [Turbo Laravel](https://github.com/tonysm/turbo-laravel) package is pretty much done. I haven't tagged v1 yet because I'm waiting on the [Turbo.js](https://turbo.hotwire.dev/) library to get stable as well, although I can't seen anything changing that would force me to change a lot (the integration surface of the backend and itself Turbo.js is really small).
+The [Turbo Laravel](https://github.com/tonysm/turbo-laravel) package is pretty much done. I haven't tagged v1 yet because I'm waiting on the [Turbo.js](https://turbo.hotwire.dev/) library to get stable as well, although I can't seen anything changing that would force me to change a lot (the integration surface of the backend and Turbo.js is really small).
 
 I thought of writing a longer version of an introduction to the package itself (some kind of Getting Started), but I think that both the [Turbo Handbook](https://turbo.hotwire.dev/handbook/introduction) and the [Turbo Laravel documentation](https://github.com/tonysm/turbo-laravel/tree/main/docs) really covers a lot of what is possible. So, for now, I'll just reference them.
 
